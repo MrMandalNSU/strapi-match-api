@@ -27,15 +27,8 @@ module.exports = createCoreController("api::match.match", ({ strapi }) => ({
       });
 
       if (!upcomingMatches || upcomingMatches.length === 0) {
+        ctx.status = 404;
         return {
-          data: [],
-          meta: {
-            pagination: {
-              limit: parseInt(limit),
-              offset: parseInt(offset),
-              total: 0,
-            },
-          },
           message: "No upcoming matches available",
         };
       }
